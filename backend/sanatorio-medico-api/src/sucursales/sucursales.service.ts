@@ -83,7 +83,7 @@ export class SucursalesService {
         !datos.fechaApertura ||
         !datos.horaApertura ||
         !datos.presupuestoMensual ||
-        !datos.estado
+        datos.estado === undefined || datos.estado === null
       ) {
         throw new BadRequestException({
           exito: 0,
@@ -146,7 +146,7 @@ export class SucursalesService {
         !datos.fechaApertura ||
         !datos.horaApertura ||
         !datos.presupuestoMensual ||
-        !datos.estado
+        datos.estado === undefined || datos.estado === null
       ) {
         throw new BadRequestException({
           exito: 0,

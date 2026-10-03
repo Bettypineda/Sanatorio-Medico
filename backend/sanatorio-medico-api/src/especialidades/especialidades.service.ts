@@ -83,7 +83,7 @@ export class EspecialidadesService {
     try {
       if (
         !datos.nombreEspecialidad ||
-        !datos.requiereCita ||
+        (datos.requiereCita === undefined || datos.requiereCita === null) ||
         !datos.estado
       ) {
         throw new BadRequestException({
@@ -147,7 +147,7 @@ export class EspecialidadesService {
       }
       if (
         !datos.nombreEspecialidad ||
-        !datos.requiereCita ||
+        (datos.requiereCita === undefined || datos.requiereCita === null) ||
         !datos.estado
       ) {
         throw new BadRequestException({
