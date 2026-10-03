@@ -1,0 +1,32 @@
+# Dependencias
+node_modules/
+/backend/sanatorio-medico-api/dist/
+/frontend/sanatorio-medico-web/.next/
+
+# Variables de entorno
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# Sistema operativo / editores
+.DS_Store
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Next.js
+/frontend/sanatorio-medico-web/next-env.d.ts.bak
+
+# Build info
+tsconfig.build.tsbuildinfo
+
+# Cobertura y pruebas
+/backend/sanatorio-medico-api/coverage/
