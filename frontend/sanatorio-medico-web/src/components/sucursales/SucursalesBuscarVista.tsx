@@ -85,7 +85,7 @@ export default function SucursalesBuscarVista() {
             </div>
           </div>
           <div className="form-actions">
-            <Link href={`/sucursales/editar/${(resultado as any).codigoSucursal}`} className="button-primary">
+            <Link href={`/sucursales/editar/${resultado.codigoSucursal}`} className="button-primary">
               <Pencil size={18} strokeWidth={2} />
               <span>Editar este registro</span>
             </Link>

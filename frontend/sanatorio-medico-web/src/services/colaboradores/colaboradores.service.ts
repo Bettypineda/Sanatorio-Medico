@@ -1,5 +1,4 @@
 import {
-  Colaborador,
   RespuestaColaboradores,
   RespuestaAccionColaboradores,
 } from '@/interfaces/colaboradores/colaborador.interface';
@@ -12,7 +11,7 @@ export async function consultarColaboradores(): Promise<RespuestaColaboradores> 
     cache: 'no-store',
   });
   if (!respuesta.ok) {
-    throw new Error('Error al consultar colaboradors.');
+    throw new Error('Error al consultar colaboradores.');
   }
   return respuesta.json();
 }
@@ -30,20 +29,20 @@ export async function buscarColaborador(codigoColaborador: number): Promise<Resp
 }
 
 export async function agregarColaborador(datos: {
-  codigoSucursal,
-      codigoRol,
-      nombres,
-      apellidos,
-      dpi,
-      numeroColegiado,
-      tipoColaborador,
-      telefono,
-      correoElectronico,
-      direccion,
-      fechaContratacion,
-      nombreUsuario,
-      claveAcceso,
-      estado
+  codigoSucursal: number,
+  codigoRol: number,
+  nombres: string,
+  apellidos: string,
+  dpi: string,
+  numeroColegiado: string | null,
+  tipoColaborador: string,
+  telefono: string,
+  correoElectronico: string | null,
+  direccion: string | null,
+  fechaContratacion: string,
+  nombreUsuario: string,
+  claveAcceso: string,
+  estado: string
 }): Promise<RespuestaAccionColaboradores> {
   const respuesta = await fetch(`${API_URL}/colaboradoresAgregar`, {
     method: 'POST',
@@ -58,20 +57,20 @@ export async function agregarColaborador(datos: {
 }
 
 export async function editarColaborador(codigoColaborador: number, datos: {
-  codigoSucursal,
-      codigoRol,
-      nombres,
-      apellidos,
-      dpi,
-      numeroColegiado,
-      tipoColaborador,
-      telefono,
-      correoElectronico,
-      direccion,
-      fechaContratacion,
-      nombreUsuario,
-      claveAcceso,
-      estado
+  codigoSucursal: number,
+  codigoRol: number,
+  nombres: string,
+  apellidos: string,
+  dpi: string,
+  numeroColegiado: string | null,
+  tipoColaborador: string,
+  telefono: string,
+  correoElectronico: string | null,
+  direccion: string | null,
+  fechaContratacion: string,
+  nombreUsuario: string,
+  claveAcceso: string,
+  estado: string
 }): Promise<RespuestaAccionColaboradores> {
   const respuesta = await fetch(`${API_URL}/colaboradoresEditar/${codigoColaborador}`, {
     method: 'PUT',

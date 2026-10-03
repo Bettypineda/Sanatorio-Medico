@@ -1,5 +1,4 @@
 import {
-  Paciente,
   RespuestaPacientes,
   RespuestaAccionPacientes,
 } from '@/interfaces/pacientes/paciente.interface';
@@ -30,21 +29,21 @@ export async function buscarPaciente(codigoPaciente: number): Promise<RespuestaP
 }
 
 export async function agregarPaciente(datos: {
-  numeroExpediente,
-      tipoDocumento,
-      numeroDocumento,
-      nombres,
-      apellidos,
-      fechaNacimiento,
-      genero,
-      tipoSangre,
-      telefono,
-      correoElectronico,
-      direccion,
-      contactoEmergencia,
-      telefonoEmergencia,
-      alergias,
-      estado
+  numeroExpediente: string,
+  tipoDocumento: string,
+  numeroDocumento: string,
+  nombres: string,
+  apellidos: string,
+  fechaNacimiento: string,
+  genero: string,
+  tipoSangre: string | null,
+  telefono: string,
+  correoElectronico: string | null,
+  direccion: string,
+  contactoEmergencia: string | null,
+  telefonoEmergencia: string | null,
+  alergias: string | null,
+  estado: string
 }): Promise<RespuestaAccionPacientes> {
   const respuesta = await fetch(`${API_URL}/pacientesAgregar`, {
     method: 'POST',
@@ -59,21 +58,21 @@ export async function agregarPaciente(datos: {
 }
 
 export async function editarPaciente(codigoPaciente: number, datos: {
-  numeroExpediente,
-      tipoDocumento,
-      numeroDocumento,
-      nombres,
-      apellidos,
-      fechaNacimiento,
-      genero,
-      tipoSangre,
-      telefono,
-      correoElectronico,
-      direccion,
-      contactoEmergencia,
-      telefonoEmergencia,
-      alergias,
-      estado
+  numeroExpediente: string,
+  tipoDocumento: string,
+  numeroDocumento: string,
+  nombres: string,
+  apellidos: string,
+  fechaNacimiento: string,
+  genero: string,
+  tipoSangre: string | null,
+  telefono: string,
+  correoElectronico: string | null,
+  direccion: string,
+  contactoEmergencia: string | null,
+  telefonoEmergencia: string | null,
+  alergias: string | null,
+  estado: string
 }): Promise<RespuestaAccionPacientes> {
   const respuesta = await fetch(`${API_URL}/pacientesEditar/${codigoPaciente}`, {
     method: 'PUT',

@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { CalendarDays, Save, ArrowLeft } from 'lucide-react';
-import { Cita } from '@/interfaces/citas/cita.interface';
 import { agregarCita, editarCita, buscarCita } from '@/services/citas/citas.service';
 
 interface Props {
@@ -11,7 +10,24 @@ interface Props {
   codigoCitaConsulta?: number;
 }
 
-const valoresIniciales = {
+interface DatosCitaForm {
+  codigoPaciente: number | null,
+  codigoColaborador: number | null,
+  codigoSucursal: number | null,
+  codigoEspecialidad: number | null,
+  fechaHoraCita: string,
+  tipoAtencion: string,
+  motivoConsulta: string,
+  sintomas: string | null,
+  observacionesMedicas: string | null,
+  tratamientoGeneral: string | null,
+  presionArterial: string | null,
+  temperatura: number | null,
+  peso: number | null,
+  estado: string
+}
+
+const valoresIniciales: DatosCitaForm = {
     codigoPaciente: 0,
     codigoColaborador: 0,
     codigoSucursal: 0,
@@ -30,7 +46,7 @@ const valoresIniciales = {
 
 export default function CitasFormVista({ modo, codigoCitaConsulta }: Props) {
   const router = useRouter();
-  const [form, setForm] = useState<any>(valoresIniciales);
+  const [form, setForm] = useState<DatosCitaForm>(valoresIniciales);
   const [cargando, setCargando] = useState(modo === 'editar');
   const [guardando, setGuardando] = useState(false);
   const [mensaje, setMensaje] = useState('');
@@ -53,20 +69,20 @@ export default function CitasFormVista({ modo, codigoCitaConsulta }: Props) {
     setGuardando(true);
     setMensaje('');
     const datos = {
-      codigoPaciente,
-      codigoColaborador,
-      codigoSucursal,
-      codigoEspecialidad,
-      fechaHoraCita,
-      tipoAtencion,
-      motivoConsulta,
-      sintomas,
-      observacionesMedicas,
-      tratamientoGeneral,
-      presionArterial,
-      temperatura,
-      peso,
-      estado
+      codigoPaciente: form.codigoPaciente ?? 0,
+      codigoColaborador: form.codigoColaborador ?? 0,
+      codigoSucursal: form.codigoSucursal ?? 0,
+      codigoEspecialidad: form.codigoEspecialidad ?? 0,
+      fechaHoraCita: form.fechaHoraCita,
+      tipoAtencion: form.tipoAtencion,
+      motivoConsulta: form.motivoConsulta,
+      sintomas: form.sintomas,
+      observacionesMedicas: form.observacionesMedicas,
+      tratamientoGeneral: form.tratamientoGeneral,
+      presionArterial: form.presionArterial,
+      temperatura: form.temperatura,
+      peso: form.peso,
+      estado: form.estado
     };
     const respuesta =
       modo === 'agregar'

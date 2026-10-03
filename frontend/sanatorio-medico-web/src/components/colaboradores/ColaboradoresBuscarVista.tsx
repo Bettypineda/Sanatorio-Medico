@@ -117,7 +117,7 @@ export default function ColaboradoresBuscarVista() {
             </div>
           </div>
           <div className="form-actions">
-            <Link href={`/colaboradores/editar/${(resultado as any).codigoColaborador}`} className="button-primary">
+            <Link href={`/colaboradores/editar/${resultado.codigoColaborador}`} className="button-primary">
               <Pencil size={18} strokeWidth={2} />
               <span>Editar este registro</span>
             </Link>

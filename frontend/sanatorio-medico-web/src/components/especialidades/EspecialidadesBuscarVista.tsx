@@ -93,7 +93,7 @@ export default function EspecialidadesBuscarVista() {
             </div>
           </div>
           <div className="form-actions">
-            <Link href={`/especialidades/editar/${(resultado as any).codigoEspecialidad}`} className="button-primary">
+            <Link href={`/especialidades/editar/${resultado.codigoEspecialidad}`} className="button-primary">
               <Pencil size={18} strokeWidth={2} />
               <span>Editar este registro</span>
             </Link>

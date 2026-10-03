@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { ClipboardList, Save, ArrowLeft } from 'lucide-react';
-import { Especialidad } from '@/interfaces/especialidades/especialidad.interface';
 import { agregarEspecialidad, editarEspecialidad, buscarEspecialidad } from '@/services/especialidades/especialidades.service';
 
 interface Props {
@@ -11,7 +10,18 @@ interface Props {
   codigoEspecialidad?: number;
 }
 
-const valoresIniciales = {
+interface DatosEspecialidadForm {
+  nombreEspecialidad: string,
+  descripcion: string | null,
+  areaMedica: string | null,
+  duracionConsulta: number | null,
+  costoConsulta: number | null,
+  requiereCita: boolean,
+  observaciones: string | null,
+  estado: string
+}
+
+const valoresIniciales: DatosEspecialidadForm = {
     nombreEspecialidad: '',
     descripcion: null,
     areaMedica: null,
@@ -24,7 +34,7 @@ const valoresIniciales = {
 
 export default function EspecialidadesFormVista({ modo, codigoEspecialidad }: Props) {
   const router = useRouter();
-  const [form, setForm] = useState<any>(valoresIniciales);
+  const [form, setForm] = useState<DatosEspecialidadForm>(valoresIniciales);
   const [cargando, setCargando] = useState(modo === 'editar');
   const [guardando, setGuardando] = useState(false);
   const [mensaje, setMensaje] = useState('');
@@ -47,14 +57,14 @@ export default function EspecialidadesFormVista({ modo, codigoEspecialidad }: Pr
     setGuardando(true);
     setMensaje('');
     const datos = {
-      nombreEspecialidad,
-      descripcion,
-      areaMedica,
-      duracionConsulta,
-      costoConsulta,
-      requiereCita,
-      observaciones,
-      estado
+      nombreEspecialidad: form.nombreEspecialidad,
+      descripcion: form.descripcion,
+      areaMedica: form.areaMedica,
+      duracionConsulta: form.duracionConsulta,
+      costoConsulta: form.costoConsulta,
+      requiereCita: form.requiereCita,
+      observaciones: form.observaciones,
+      estado: form.estado
     };
     const respuesta =
       modo === 'agregar'

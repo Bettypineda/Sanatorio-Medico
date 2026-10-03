@@ -117,7 +117,7 @@ export default function CitasBuscarVista() {
             </div>
           </div>
           <div className="form-actions">
-            <Link href={`/citas/editar/${(resultado as any).codigoCitaConsulta}`} className="button-primary">
+            <Link href={`/citas/editar/${resultado.codigoCitaConsulta}`} className="button-primary">
               <Pencil size={18} strokeWidth={2} />
               <span>Editar este registro</span>
             </Link>

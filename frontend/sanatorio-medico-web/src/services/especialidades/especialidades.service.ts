@@ -1,5 +1,4 @@
 import {
-  Especialidad,
   RespuestaEspecialidades,
   RespuestaAccionEspecialidades,
 } from '@/interfaces/especialidades/especialidad.interface';
@@ -12,7 +11,7 @@ export async function consultarEspecialidades(): Promise<RespuestaEspecialidades
     cache: 'no-store',
   });
   if (!respuesta.ok) {
-    throw new Error('Error al consultar especialidads.');
+    throw new Error('Error al consultar especialidades.');
   }
   return respuesta.json();
 }
@@ -30,14 +29,14 @@ export async function buscarEspecialidad(codigoEspecialidad: number): Promise<Re
 }
 
 export async function agregarEspecialidad(datos: {
-  nombreEspecialidad,
-      descripcion,
-      areaMedica,
-      duracionConsulta,
-      costoConsulta,
-      requiereCita,
-      observaciones,
-      estado
+  nombreEspecialidad: string,
+  descripcion: string | null,
+  areaMedica: string | null,
+  duracionConsulta: number | null,
+  costoConsulta: number | null,
+  requiereCita: boolean,
+  observaciones: string | null,
+  estado: string
 }): Promise<RespuestaAccionEspecialidades> {
   const respuesta = await fetch(`${API_URL}/especialidadesAgregar`, {
     method: 'POST',
@@ -52,14 +51,14 @@ export async function agregarEspecialidad(datos: {
 }
 
 export async function editarEspecialidad(codigoEspecialidad: number, datos: {
-  nombreEspecialidad,
-      descripcion,
-      areaMedica,
-      duracionConsulta,
-      costoConsulta,
-      requiereCita,
-      observaciones,
-      estado
+  nombreEspecialidad: string,
+  descripcion: string | null,
+  areaMedica: string | null,
+  duracionConsulta: number | null,
+  costoConsulta: number | null,
+  requiereCita: boolean,
+  observaciones: string | null,
+  estado: string
 }): Promise<RespuestaAccionEspecialidades> {
   const respuesta = await fetch(`${API_URL}/especialidadesEditar/${codigoEspecialidad}`, {
     method: 'PUT',

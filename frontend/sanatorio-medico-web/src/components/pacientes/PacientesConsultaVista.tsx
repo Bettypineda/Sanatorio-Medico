@@ -27,6 +27,7 @@ export default function PacientesConsultaVista() {
   }
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     cargar();
   }, []);
 
@@ -40,9 +41,9 @@ export default function PacientesConsultaVista() {
     }
   }
 
-  const activos = items.filter((item: any) => item.estado === 'Activo').length;
+  const activos = items.filter((item: Paciente) => item.estado === 'Activo').length;
   const inactivos = items.length - activos;
-  const filtrados = items.filter((item: any) =>
+  const filtrados = items.filter((item: Paciente) =>
     JSON.stringify(item).toLowerCase().includes(filtro.toLowerCase()),
   );
 
@@ -127,12 +128,12 @@ export default function PacientesConsultaVista() {
               </tr>
             </thead>
             <tbody>
-              {filtrados.map((item: any) => (
+              {filtrados.map((item: Paciente) => (
                 <tr key={item.codigoPaciente}>
-                  <td>{String((item as any).numeroExpediente ?? '-')}</td>
-                  <td>{String((item as any).tipoDocumento ?? '-')}</td>
-                  <td>{String((item as any).numeroDocumento ?? '-')}</td>
-                  <td>{String((item as any).nombres ?? '-')}</td>
+                  <td>{String(item.numeroExpediente ?? '-')}</td>
+                  <td>{String(item.tipoDocumento ?? '-')}</td>
+                  <td>{String(item.numeroDocumento ?? '-')}</td>
+                  <td>{String(item.nombres ?? '-')}</td>
                   <td>
                     <span className={item.estado === 'Activo' ? 'status-badge status-active' : 'status-badge status-inactive'}>
                       <span className="status-dot" aria-hidden="true" />

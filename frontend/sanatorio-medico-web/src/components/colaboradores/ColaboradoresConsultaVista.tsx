@@ -27,6 +27,7 @@ export default function ColaboradoresConsultaVista() {
   }
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     cargar();
   }, []);
 
@@ -40,9 +41,9 @@ export default function ColaboradoresConsultaVista() {
     }
   }
 
-  const activos = items.filter((item: any) => item.estado === 'Activo').length;
+  const activos = items.filter((item: Colaborador) => item.estado === 'Activo').length;
   const inactivos = items.length - activos;
-  const filtrados = items.filter((item: any) =>
+  const filtrados = items.filter((item: Colaborador) =>
     JSON.stringify(item).toLowerCase().includes(filtro.toLowerCase()),
   );
 
@@ -127,12 +128,12 @@ export default function ColaboradoresConsultaVista() {
               </tr>
             </thead>
             <tbody>
-              {filtrados.map((item: any) => (
+              {filtrados.map((item: Colaborador) => (
                 <tr key={item.codigoColaborador}>
-                  <td>{String((item as any).codigoSucursal ?? '-')}</td>
-                  <td>{String((item as any).codigoRol ?? '-')}</td>
-                  <td>{String((item as any).nombres ?? '-')}</td>
-                  <td>{String((item as any).apellidos ?? '-')}</td>
+                  <td>{String(item.codigoSucursal ?? '-')}</td>
+                  <td>{String(item.codigoRol ?? '-')}</td>
+                  <td>{String(item.nombres ?? '-')}</td>
+                  <td>{String(item.apellidos ?? '-')}</td>
                   <td>
                     <span className={item.estado === 'Activo' ? 'status-badge status-active' : 'status-badge status-inactive'}>
                       <span className="status-dot" aria-hidden="true" />

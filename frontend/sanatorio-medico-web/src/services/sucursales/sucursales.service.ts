@@ -1,5 +1,4 @@
 import {
-  Sucursal,
   RespuestaSucursales,
   RespuestaAccionSucursales,
 } from '@/interfaces/sucursales/sucursal.interface';
@@ -12,7 +11,7 @@ export async function consultarSucursales(): Promise<RespuestaSucursales> {
     cache: 'no-store',
   });
   if (!respuesta.ok) {
-    throw new Error('Error al consultar sucursals.');
+    throw new Error('Error al consultar sucursales.');
   }
   return respuesta.json();
 }
@@ -30,12 +29,12 @@ export async function buscarSucursal(codigoSucursal: number): Promise<RespuestaS
 }
 
 export async function agregarSucursal(datos: {
-  nombreSucursal,
-      direccion,
-      fechaApertura,
-      horaApertura,
-      presupuestoMensual,
-      estado
+  nombreSucursal: string,
+  direccion: string,
+  fechaApertura: string,
+  horaApertura: string,
+  presupuestoMensual: number,
+  estado: boolean
 }): Promise<RespuestaAccionSucursales> {
   const respuesta = await fetch(`${API_URL}/sucursalesAgregar`, {
     method: 'POST',
@@ -50,12 +49,12 @@ export async function agregarSucursal(datos: {
 }
 
 export async function editarSucursal(codigoSucursal: number, datos: {
-  nombreSucursal,
-      direccion,
-      fechaApertura,
-      horaApertura,
-      presupuestoMensual,
-      estado
+  nombreSucursal: string,
+  direccion: string,
+  fechaApertura: string,
+  horaApertura: string,
+  presupuestoMensual: number,
+  estado: boolean
 }): Promise<RespuestaAccionSucursales> {
   const respuesta = await fetch(`${API_URL}/sucursalesEditar/${codigoSucursal}`, {
     method: 'PUT',

@@ -27,6 +27,7 @@ export default function EspecialidadesConsultaVista() {
   }
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     cargar();
   }, []);
 
@@ -40,9 +41,9 @@ export default function EspecialidadesConsultaVista() {
     }
   }
 
-  const activos = items.filter((item: any) => item.estado === 'Activo').length;
+  const activos = items.filter((item: Especialidad) => item.estado === 'Activo').length;
   const inactivos = items.length - activos;
-  const filtrados = items.filter((item: any) =>
+  const filtrados = items.filter((item: Especialidad) =>
     JSON.stringify(item).toLowerCase().includes(filtro.toLowerCase()),
   );
 
@@ -127,12 +128,12 @@ export default function EspecialidadesConsultaVista() {
               </tr>
             </thead>
             <tbody>
-              {filtrados.map((item: any) => (
+              {filtrados.map((item: Especialidad) => (
                 <tr key={item.codigoEspecialidad}>
-                  <td>{String((item as any).nombreEspecialidad ?? '-')}</td>
-                  <td>{String((item as any).descripcion ?? '-')}</td>
-                  <td>{String((item as any).areaMedica ?? '-')}</td>
-                  <td>{String((item as any).duracionConsulta ?? '-')}</td>
+                  <td>{String(item.nombreEspecialidad ?? '-')}</td>
+                  <td>{String(item.descripcion ?? '-')}</td>
+                  <td>{String(item.areaMedica ?? '-')}</td>
+                  <td>{String(item.duracionConsulta ?? '-')}</td>
                   <td>
                     <span className={item.estado === 'Activo' ? 'status-badge status-active' : 'status-badge status-inactive'}>
                       <span className="status-dot" aria-hidden="true" />

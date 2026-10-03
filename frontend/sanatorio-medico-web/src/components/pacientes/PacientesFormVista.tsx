@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Users, Save, ArrowLeft } from 'lucide-react';
-import { Paciente } from '@/interfaces/pacientes/paciente.interface';
 import { agregarPaciente, editarPaciente, buscarPaciente } from '@/services/pacientes/pacientes.service';
 
 interface Props {
@@ -11,7 +10,25 @@ interface Props {
   codigoPaciente?: number;
 }
 
-const valoresIniciales = {
+interface DatosPacienteForm {
+  numeroExpediente: string,
+  tipoDocumento: string,
+  numeroDocumento: string,
+  nombres: string,
+  apellidos: string,
+  fechaNacimiento: string,
+  genero: string,
+  tipoSangre: string | null,
+  telefono: string,
+  correoElectronico: string | null,
+  direccion: string,
+  contactoEmergencia: string | null,
+  telefonoEmergencia: string | null,
+  alergias: string | null,
+  estado: string
+}
+
+const valoresIniciales: DatosPacienteForm = {
     numeroExpediente: '',
     tipoDocumento: '',
     numeroDocumento: '',
@@ -31,7 +48,7 @@ const valoresIniciales = {
 
 export default function PacientesFormVista({ modo, codigoPaciente }: Props) {
   const router = useRouter();
-  const [form, setForm] = useState<any>(valoresIniciales);
+  const [form, setForm] = useState<DatosPacienteForm>(valoresIniciales);
   const [cargando, setCargando] = useState(modo === 'editar');
   const [guardando, setGuardando] = useState(false);
   const [mensaje, setMensaje] = useState('');
@@ -54,21 +71,21 @@ export default function PacientesFormVista({ modo, codigoPaciente }: Props) {
     setGuardando(true);
     setMensaje('');
     const datos = {
-      numeroExpediente,
-      tipoDocumento,
-      numeroDocumento,
-      nombres,
-      apellidos,
-      fechaNacimiento,
-      genero,
-      tipoSangre,
-      telefono,
-      correoElectronico,
-      direccion,
-      contactoEmergencia,
-      telefonoEmergencia,
-      alergias,
-      estado
+      numeroExpediente: form.numeroExpediente,
+      tipoDocumento: form.tipoDocumento,
+      numeroDocumento: form.numeroDocumento,
+      nombres: form.nombres,
+      apellidos: form.apellidos,
+      fechaNacimiento: form.fechaNacimiento,
+      genero: form.genero,
+      tipoSangre: form.tipoSangre,
+      telefono: form.telefono,
+      correoElectronico: form.correoElectronico,
+      direccion: form.direccion,
+      contactoEmergencia: form.contactoEmergencia,
+      telefonoEmergencia: form.telefonoEmergencia,
+      alergias: form.alergias,
+      estado: form.estado
     };
     const respuesta =
       modo === 'agregar'

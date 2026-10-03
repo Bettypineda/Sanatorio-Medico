@@ -121,7 +121,7 @@ export default function PacientesBuscarVista() {
             </div>
           </div>
           <div className="form-actions">
-            <Link href={`/pacientes/editar/${(resultado as any).codigoPaciente}`} className="button-primary">
+            <Link href={`/pacientes/editar/${resultado.codigoPaciente}`} className="button-primary">
               <Pencil size={18} strokeWidth={2} />
               <span>Editar este registro</span>
             </Link>

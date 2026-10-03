@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Stethoscope, Save, ArrowLeft } from 'lucide-react';
-import { Colaborador } from '@/interfaces/colaboradores/colaborador.interface';
 import { agregarColaborador, editarColaborador, buscarColaborador } from '@/services/colaboradores/colaboradores.service';
 
 interface Props {
@@ -11,7 +10,24 @@ interface Props {
   codigoColaborador?: number;
 }
 
-const valoresIniciales = {
+interface DatosColaboradorForm {
+  codigoSucursal: number | null,
+  codigoRol: number | null,
+  nombres: string,
+  apellidos: string,
+  dpi: string,
+  numeroColegiado: string | null,
+  tipoColaborador: string,
+  telefono: string,
+  correoElectronico: string | null,
+  direccion: string | null,
+  fechaContratacion: string,
+  nombreUsuario: string,
+  claveAcceso: string,
+  estado: string
+}
+
+const valoresIniciales: DatosColaboradorForm = {
     codigoSucursal: 0,
     codigoRol: 0,
     nombres: '',
@@ -30,7 +46,7 @@ const valoresIniciales = {
 
 export default function ColaboradoresFormVista({ modo, codigoColaborador }: Props) {
   const router = useRouter();
-  const [form, setForm] = useState<any>(valoresIniciales);
+  const [form, setForm] = useState<DatosColaboradorForm>(valoresIniciales);
   const [cargando, setCargando] = useState(modo === 'editar');
   const [guardando, setGuardando] = useState(false);
   const [mensaje, setMensaje] = useState('');
@@ -53,20 +69,20 @@ export default function ColaboradoresFormVista({ modo, codigoColaborador }: Prop
     setGuardando(true);
     setMensaje('');
     const datos = {
-      codigoSucursal,
-      codigoRol,
-      nombres,
-      apellidos,
-      dpi,
-      numeroColegiado,
-      tipoColaborador,
-      telefono,
-      correoElectronico,
-      direccion,
-      fechaContratacion,
-      nombreUsuario,
-      claveAcceso,
-      estado
+      codigoSucursal: form.codigoSucursal ?? 0,
+      codigoRol: form.codigoRol ?? 0,
+      nombres: form.nombres,
+      apellidos: form.apellidos,
+      dpi: form.dpi,
+      numeroColegiado: form.numeroColegiado,
+      tipoColaborador: form.tipoColaborador,
+      telefono: form.telefono,
+      correoElectronico: form.correoElectronico,
+      direccion: form.direccion,
+      fechaContratacion: form.fechaContratacion,
+      nombreUsuario: form.nombreUsuario,
+      claveAcceso: form.claveAcceso,
+      estado: form.estado
     };
     const respuesta =
       modo === 'agregar'

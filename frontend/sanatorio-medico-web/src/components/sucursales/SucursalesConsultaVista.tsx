@@ -27,6 +27,7 @@ export default function SucursalesConsultaVista() {
   }
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     cargar();
   }, []);
 
@@ -40,9 +41,9 @@ export default function SucursalesConsultaVista() {
     }
   }
 
-  const activos = items.filter((item: any) => item.estado).length;
+  const activos = items.filter((item: Sucursal) => item.estado).length;
   const inactivos = items.length - activos;
-  const filtrados = items.filter((item: any) =>
+  const filtrados = items.filter((item: Sucursal) =>
     JSON.stringify(item).toLowerCase().includes(filtro.toLowerCase()),
   );
 
@@ -127,12 +128,12 @@ export default function SucursalesConsultaVista() {
               </tr>
             </thead>
             <tbody>
-              {filtrados.map((item: any) => (
+              {filtrados.map((item: Sucursal) => (
                 <tr key={item.codigoSucursal}>
-                  <td>{String((item as any).nombreSucursal ?? '-')}</td>
-                  <td>{String((item as any).direccion ?? '-')}</td>
-                  <td>{String((item as any).fechaApertura ?? '-')}</td>
-                  <td>{String((item as any).horaApertura ?? '-')}</td>
+                  <td>{String(item.nombreSucursal ?? '-')}</td>
+                  <td>{String(item.direccion ?? '-')}</td>
+                  <td>{String(item.fechaApertura ?? '-')}</td>
+                  <td>{String(item.horaApertura ?? '-')}</td>
                   <td>
                     <span className={item.estado ? 'status-badge status-active' : 'status-badge status-inactive'}>
                       <span className="status-dot" aria-hidden="true" />

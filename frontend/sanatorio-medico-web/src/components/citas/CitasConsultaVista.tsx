@@ -27,6 +27,7 @@ export default function CitasConsultaVista() {
   }
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     cargar();
   }, []);
 
@@ -40,9 +41,9 @@ export default function CitasConsultaVista() {
     }
   }
 
-  const activos = items.filter((item: any) => item.estado === 'Activo').length;
+  const activos = items.filter((item: Cita) => item.estado === 'Activo').length;
   const inactivos = items.length - activos;
-  const filtrados = items.filter((item: any) =>
+  const filtrados = items.filter((item: Cita) =>
     JSON.stringify(item).toLowerCase().includes(filtro.toLowerCase()),
   );
 
@@ -127,12 +128,12 @@ export default function CitasConsultaVista() {
               </tr>
             </thead>
             <tbody>
-              {filtrados.map((item: any) => (
+              {filtrados.map((item: Cita) => (
                 <tr key={item.codigoCitaConsulta}>
-                  <td>{String((item as any).codigoPaciente ?? '-')}</td>
-                  <td>{String((item as any).codigoColaborador ?? '-')}</td>
-                  <td>{String((item as any).codigoSucursal ?? '-')}</td>
-                  <td>{String((item as any).codigoEspecialidad ?? '-')}</td>
+                  <td>{String(item.codigoPaciente ?? '-')}</td>
+                  <td>{String(item.codigoColaborador ?? '-')}</td>
+                  <td>{String(item.codigoSucursal ?? '-')}</td>
+                  <td>{String(item.codigoEspecialidad ?? '-')}</td>
                   <td>
                     <span className={item.estado === 'Activo' ? 'status-badge status-active' : 'status-badge status-inactive'}>
                       <span className="status-dot" aria-hidden="true" />

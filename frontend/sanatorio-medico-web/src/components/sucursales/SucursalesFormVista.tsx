@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Building2, Save, ArrowLeft } from 'lucide-react';
-import { Sucursal } from '@/interfaces/sucursales/sucursal.interface';
 import { agregarSucursal, editarSucursal, buscarSucursal } from '@/services/sucursales/sucursales.service';
 
 interface Props {
@@ -11,7 +10,16 @@ interface Props {
   codigoSucursal?: number;
 }
 
-const valoresIniciales = {
+interface DatosSucursalForm {
+  nombreSucursal: string,
+  direccion: string,
+  fechaApertura: string,
+  horaApertura: string,
+  presupuestoMensual: number | null,
+  estado: boolean
+}
+
+const valoresIniciales: DatosSucursalForm = {
     nombreSucursal: '',
     direccion: '',
     fechaApertura: '',
@@ -22,7 +30,7 @@ const valoresIniciales = {
 
 export default function SucursalesFormVista({ modo, codigoSucursal }: Props) {
   const router = useRouter();
-  const [form, setForm] = useState<any>(valoresIniciales);
+  const [form, setForm] = useState<DatosSucursalForm>(valoresIniciales);
   const [cargando, setCargando] = useState(modo === 'editar');
   const [guardando, setGuardando] = useState(false);
   const [mensaje, setMensaje] = useState('');
@@ -45,12 +53,12 @@ export default function SucursalesFormVista({ modo, codigoSucursal }: Props) {
     setGuardando(true);
     setMensaje('');
     const datos = {
-      nombreSucursal,
-      direccion,
-      fechaApertura,
-      horaApertura,
-      presupuestoMensual,
-      estado
+      nombreSucursal: form.nombreSucursal,
+      direccion: form.direccion,
+      fechaApertura: form.fechaApertura,
+      horaApertura: form.horaApertura,
+      presupuestoMensual: form.presupuestoMensual ?? 0,
+      estado: form.estado
     };
     const respuesta =
       modo === 'agregar'

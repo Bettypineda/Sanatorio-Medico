@@ -1,5 +1,4 @@
 import {
-  Cita,
   RespuestaCitas,
   RespuestaAccionCitas,
 } from '@/interfaces/citas/cita.interface';
@@ -30,20 +29,20 @@ export async function buscarCita(codigoCitaConsulta: number): Promise<RespuestaC
 }
 
 export async function agregarCita(datos: {
-  codigoPaciente,
-      codigoColaborador,
-      codigoSucursal,
-      codigoEspecialidad,
-      fechaHoraCita,
-      tipoAtencion,
-      motivoConsulta,
-      sintomas,
-      observacionesMedicas,
-      tratamientoGeneral,
-      presionArterial,
-      temperatura,
-      peso,
-      estado
+  codigoPaciente: number,
+  codigoColaborador: number,
+  codigoSucursal: number,
+  codigoEspecialidad: number,
+  fechaHoraCita: string,
+  tipoAtencion: string,
+  motivoConsulta: string,
+  sintomas: string | null,
+  observacionesMedicas: string | null,
+  tratamientoGeneral: string | null,
+  presionArterial: string | null,
+  temperatura: number | null,
+  peso: number | null,
+  estado: string
 }): Promise<RespuestaAccionCitas> {
   const respuesta = await fetch(`${API_URL}/citasAgregar`, {
     method: 'POST',
@@ -58,20 +57,20 @@ export async function agregarCita(datos: {
 }
 
 export async function editarCita(codigoCitaConsulta: number, datos: {
-  codigoPaciente,
-      codigoColaborador,
-      codigoSucursal,
-      codigoEspecialidad,
-      fechaHoraCita,
-      tipoAtencion,
-      motivoConsulta,
-      sintomas,
-      observacionesMedicas,
-      tratamientoGeneral,
-      presionArterial,
-      temperatura,
-      peso,
-      estado
+  codigoPaciente: number,
+  codigoColaborador: number,
+  codigoSucursal: number,
+  codigoEspecialidad: number,
+  fechaHoraCita: string,
+  tipoAtencion: string,
+  motivoConsulta: string,
+  sintomas: string | null,
+  observacionesMedicas: string | null,
+  tratamientoGeneral: string | null,
+  presionArterial: string | null,
+  temperatura: number | null,
+  peso: number | null,
+  estado: string
 }): Promise<RespuestaAccionCitas> {
   const respuesta = await fetch(`${API_URL}/citasEditar/${codigoCitaConsulta}`, {
     method: 'PUT',
