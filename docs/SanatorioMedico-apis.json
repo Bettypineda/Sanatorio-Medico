@@ -1,0 +1,622 @@
+{
+  "info": {
+    "name": "Sanatorio Médico - API",
+    "description": "Coleccion de pruebas para los 5 modulos del backend (Sucursales, Pacientes, Colaboradores, Citas, Especialidades). Cada modulo tiene Consultar, Buscar, Agregar, Editar y Eliminar. La URL base se maneja con la variable baseUrl (ver pestaña Variables de la coleccion) para no repetirla en cada peticion.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000/api",
+      "type": "string",
+      "description": "URL base del backend (NestJS). La puse como variable de la coleccion para no repetirla en las 25 peticiones; si cambia el puerto o el servidor donde corre el backend, solo edito este valor una vez y se actualiza automaticamente en todas las peticiones."
+    }
+  ],
+  "item": [
+    {
+      "name": "Sucursales",
+      "item": [
+        {
+          "name": "Sucursales - Consultar (todos)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/sucursalesConsultar",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "sucursalesConsultar"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Sucursales - Buscar por código",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/sucursalesBuscar/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "sucursalesBuscar",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Sucursales - Agregar",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/sucursalesAgregar",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "sucursalesAgregar"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombreSucursal\": \"Sanatorio Central\",\n  \"direccion\": \"5a Avenida 10-25, Zona 1, Guatemala\",\n  \"fechaApertura\": \"2020-01-15\",\n  \"horaApertura\": \"08:00\",\n  \"presupuestoMensual\": 150000,\n  \"estado\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Sucursales - Editar",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/sucursalesEditar/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "sucursalesEditar",
+                "1"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombreSucursal\": \"Sanatorio Central\",\n  \"direccion\": \"5a Avenida 10-25, Zona 1, Guatemala\",\n  \"fechaApertura\": \"2020-01-15\",\n  \"horaApertura\": \"08:00\",\n  \"presupuestoMensual\": 150000,\n  \"estado\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Sucursales - Eliminar",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/sucursalesEliminar/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "sucursalesEliminar",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Pacientes",
+      "item": [
+        {
+          "name": "Pacientes - Consultar (todos)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/pacientesConsultar",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pacientesConsultar"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Pacientes - Buscar por código",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/pacientesBuscar/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pacientesBuscar",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Pacientes - Agregar",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/pacientesAgregar",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pacientesAgregar"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"numeroExpediente\": \"EXP-0001\",\n  \"tipoDocumento\": \"DPI\",\n  \"numeroDocumento\": \"2958475120101\",\n  \"nombres\": \"María José\",\n  \"apellidos\": \"López Ramírez\",\n  \"fechaNacimiento\": \"1995-04-12\",\n  \"genero\": \"Femenino\",\n  \"tipoSangre\": \"O+\",\n  \"telefono\": \"55123456\",\n  \"correoElectronico\": \"mariajose.lopez@example.com\",\n  \"direccion\": \"3a Calle 4-56, Zona 10, Guatemala\",\n  \"contactoEmergencia\": \"Carlos López\",\n  \"telefonoEmergencia\": \"55998877\",\n  \"alergias\": \"Ninguna conocida\",\n  \"estado\": \"Activo\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Pacientes - Editar",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/pacientesEditar/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pacientesEditar",
+                "1"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"numeroExpediente\": \"EXP-0001\",\n  \"tipoDocumento\": \"DPI\",\n  \"numeroDocumento\": \"2958475120101\",\n  \"nombres\": \"María José\",\n  \"apellidos\": \"López Ramírez\",\n  \"fechaNacimiento\": \"1995-04-12\",\n  \"genero\": \"Femenino\",\n  \"tipoSangre\": \"O+\",\n  \"telefono\": \"55123456\",\n  \"correoElectronico\": \"mariajose.lopez@example.com\",\n  \"direccion\": \"3a Calle 4-56, Zona 10, Guatemala\",\n  \"contactoEmergencia\": \"Carlos López\",\n  \"telefonoEmergencia\": \"55998877\",\n  \"alergias\": \"Ninguna conocida\",\n  \"estado\": \"Activo\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Pacientes - Eliminar",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/pacientesEliminar/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pacientesEliminar",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Colaboradores",
+      "item": [
+        {
+          "name": "Colaboradores - Consultar (todos)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/colaboradoresConsultar",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "colaboradoresConsultar"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Colaboradores - Buscar por código",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/colaboradoresBuscar/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "colaboradoresBuscar",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Colaboradores - Agregar",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/colaboradoresAgregar",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "colaboradoresAgregar"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"codigoSucursal\": 1,\n  \"codigoRol\": 1,\n  \"nombres\": \"Ana Lucía\",\n  \"apellidos\": \"Pérez Morales\",\n  \"dpi\": \"1859473620101\",\n  \"numeroColegiado\": \"12345\",\n  \"tipoColaborador\": \"Médico\",\n  \"telefono\": \"55667788\",\n  \"correoElectronico\": \"ana.perez@example.com\",\n  \"direccion\": \"7a Avenida 12-34, Zona 9, Guatemala\",\n  \"fechaContratacion\": \"2022-03-01\",\n  \"nombreUsuario\": \"aperez\",\n  \"claveAcceso\": \"ClaveSegura123\",\n  \"estado\": \"Activo\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Colaboradores - Editar",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/colaboradoresEditar/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "colaboradoresEditar",
+                "1"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"codigoSucursal\": 1,\n  \"codigoRol\": 1,\n  \"nombres\": \"Ana Lucía\",\n  \"apellidos\": \"Pérez Morales\",\n  \"dpi\": \"1859473620101\",\n  \"numeroColegiado\": \"12345\",\n  \"tipoColaborador\": \"Médico\",\n  \"telefono\": \"55667788\",\n  \"correoElectronico\": \"ana.perez@example.com\",\n  \"direccion\": \"7a Avenida 12-34, Zona 9, Guatemala\",\n  \"fechaContratacion\": \"2022-03-01\",\n  \"nombreUsuario\": \"aperez\",\n  \"claveAcceso\": \"ClaveSegura123\",\n  \"estado\": \"Activo\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Colaboradores - Eliminar",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/colaboradoresEliminar/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "colaboradoresEliminar",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Citas",
+      "item": [
+        {
+          "name": "Citas - Consultar (todos)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/citasConsultar",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "citasConsultar"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Citas - Buscar por código",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/citasBuscar/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "citasBuscar",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Citas - Agregar",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/citasAgregar",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "citasAgregar"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"codigoPaciente\": 1,\n  \"codigoColaborador\": 1,\n  \"codigoSucursal\": 1,\n  \"codigoEspecialidad\": 1,\n  \"fechaHoraCita\": \"2026-10-10T09:30:00\",\n  \"tipoAtencion\": \"Consulta General\",\n  \"motivoConsulta\": \"Dolor de cabeza recurrente\",\n  \"sintomas\": \"Cefalea, mareo leve\",\n  \"observacionesMedicas\": \"Paciente refiere estrés laboral\",\n  \"tratamientoGeneral\": \"Reposo e hidratación\",\n  \"presionArterial\": \"120/80\",\n  \"temperatura\": 36.8,\n  \"peso\": 65.5,\n  \"estado\": \"Pendiente\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Citas - Editar",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/citasEditar/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "citasEditar",
+                "1"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"codigoPaciente\": 1,\n  \"codigoColaborador\": 1,\n  \"codigoSucursal\": 1,\n  \"codigoEspecialidad\": 1,\n  \"fechaHoraCita\": \"2026-10-10T09:30:00\",\n  \"tipoAtencion\": \"Consulta General\",\n  \"motivoConsulta\": \"Dolor de cabeza recurrente\",\n  \"sintomas\": \"Cefalea, mareo leve\",\n  \"observacionesMedicas\": \"Paciente refiere estrés laboral\",\n  \"tratamientoGeneral\": \"Reposo e hidratación\",\n  \"presionArterial\": \"120/80\",\n  \"temperatura\": 36.8,\n  \"peso\": 65.5,\n  \"estado\": \"Pendiente\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Citas - Eliminar",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/citasEliminar/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "citasEliminar",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Especialidades",
+      "item": [
+        {
+          "name": "Especialidades - Consultar (todos)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/especialidadesConsultar",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "especialidadesConsultar"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Especialidades - Buscar por código",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/especialidadesBuscar/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "especialidadesBuscar",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Especialidades - Agregar",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/especialidadesAgregar",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "especialidadesAgregar"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombreEspecialidad\": \"Medicina General\",\n  \"descripcion\": \"Atención médica primaria\",\n  \"areaMedica\": \"General\",\n  \"duracionConsulta\": 30,\n  \"costoConsulta\": 150,\n  \"requiereCita\": true,\n  \"observaciones\": \"Disponible en todas las sucursales\",\n  \"estado\": \"Activo\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Especialidades - Editar",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/especialidadesEditar/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "especialidadesEditar",
+                "1"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombreEspecialidad\": \"Medicina General\",\n  \"descripcion\": \"Atención médica primaria\",\n  \"areaMedica\": \"General\",\n  \"duracionConsulta\": 30,\n  \"costoConsulta\": 150,\n  \"requiereCita\": true,\n  \"observaciones\": \"Disponible en todas las sucursales\",\n  \"estado\": \"Activo\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Especialidades - Eliminar",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/especialidadesEliminar/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "especialidadesEliminar",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
